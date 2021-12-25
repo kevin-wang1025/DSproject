@@ -30,7 +30,10 @@
             width:50%;
             height:10%;
             text-align:center;
-            
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+            /*background-color:skyblue;*/
         }
         #item2{
             width:100%;
@@ -112,7 +115,7 @@
                 document.getElementById("text4").innerHTML="Switch Language";
             }
             else{
-                document.getElementById("text1").innerHTML="台北美食地圖<hr>";
+                document.getElementById("text1").innerHTML="台北美食地圖";
                 document.getElementById("text2").innerHTML="還在為了晚餐吃什麼而煩惱嗎?我們為您提供最快捷、<br>"+
                 "便利的美食搜尋引擎，讓你在短時間內找到交通便利<br>"+
                 "、高品質的餐廳，從此不必為了滿足味蕾而煩惱！趕<br>"+
@@ -143,7 +146,7 @@
 <body>
     <div id="container">
         <div id="item4">
-            <header id="item1"><h1 class="font" id="text1">台北美食地圖<hr></h1></header>
+            <header id="item1"><img src="image//logo_blue.png"><h1 class="font" id="text1">台北美食地圖</h1></header>
             <article>
                 <section id="item2">
                 <p id="text2">還在為了晚餐吃什麼而煩惱嗎?我們為您提供最快捷、<br>
