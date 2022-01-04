@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="utf-8">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
+<meta charset="BIG5">
+<title>Insert title here</title>
+<style>
         body{
             background-image:url("image\\search_img.jpg");
             background-size:cover;
@@ -46,12 +48,12 @@
     <script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="container">
-        <form action="result.jsp" method="get">
-            <h1 id="item1" class="font-style">歡迎進入美食搜尋系統</h1>
-            <p id="item2"><input type="text" name="searching" autofocus placeholder="請輸入關鍵字"></p>
-            <p id="item3"><input type="submit" value="尋找美食！" class="button"></p>
-        </form>
+	<div id="container">
+		<form action='${requestUri}' method="post">
+        	<h1 id="item1" class="font-style">歡迎進入美食搜尋系統</h1>
+        	<p id="item2"><input type="text" name="searching" autofocus placeholder="請輸入關鍵字"></p>
+        	<p id="item3"><input type="submit" value="尋找美食！" class="button"></p>
+    	</form>
     </div>
     <script>
         $(document).ready(function(){

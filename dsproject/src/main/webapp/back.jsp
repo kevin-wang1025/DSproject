@@ -1,34 +1,26 @@
-<%@ page language="java" import="dsproject.*,java.util.*,java.io.*,javax.servlet.*" contentType="text/html; charset=BIG5"
-    pageEncoding="utf-8"%>
+<%@ page language="java" import="dsproject.*,java.util.*,java.io.*,org.jsoup.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page language="java" import="org.jsoup.*" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Insert title here</title>
-	<style>
-		body{
-			background-color:skyblue;
-		}
-		.container{
-			
-		}
-	</style>
 </head>
 <body>
-	<div class="container">
-		<h1 style="font-weight:bold;font-style:italic">搜尋結果</h1>
+<form action='${requestUri}' method='get'>
+	<div style="background-color:skyblue;">
+		<p>testing</p>
 		<%
-		out.println("testing");
-		String get=request.getParameter("searching") ;
+		String str=(String) request.getAttribute("str");
+		
 		List<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
 //		List<HashMap> rankwebs = new ArrayList<HashMap>();
-		
-		//使用者輸入關鍵字
 		
 		try {
 
 //----------匯入Google網頁-----------------------------------------------------//
-			GoogleQuery o =new GoogleQuery(get);
+			GoogleQuery o =new GoogleQuery(str);
 			HashMap<String,String> goo = o.query();
 
 			
@@ -47,7 +39,7 @@
 				WebPage rootPage = new WebPage(url, key);
 				WebTree t = new WebTree(rootPage);
 				tlst.add(t);
-				out.println("Webroot:"+key+","+url);
+				System.out.println("Webroot:"+key+","+url);
 				//印出主網頁的Keyword List(分析網頁的結果)
 				
 			}
@@ -68,6 +60,7 @@
 				t.root.children.get(1).addSublinksChildren(c2.query());
 				
 				}
+
 		}
 		
 		catch (IOException e) {
@@ -75,6 +68,8 @@
 				e.printStackTrace();
 			}
 		%>
+		
 	</div>
+</form>
 </body>
 </html>
