@@ -47,7 +47,7 @@
 				tlst.add(t);
 				out.println(key+","+url);
 		%>
-				<br>
+				<br><br>
 		<%
 				//印出主網頁的Keyword List(分析網頁的結果)
 				
