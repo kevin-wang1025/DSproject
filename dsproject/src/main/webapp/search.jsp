@@ -44,16 +44,21 @@
             height:30%;
             text-align:center;
         }
+        #class{
+        	text-align:center;
+        }
     </style>
     <script src="jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div id="container">
-		<form action='${requestUri}' method="post">
+		<form action='result.jsp' method="get">
         	<h1 id="item1" class="font-style">歡迎進入美食搜尋系統</h1>
         	<p id="item2"><input type="text" name="searching" autofocus placeholder="請輸入關鍵字"></p>
         	<p id="item3"><input type="submit" value="尋找美食！" class="button"></p>
-    	</form>
+		</form>
+		<br><br><br>
+		<a href="about.html" class="about">關於我們</a>
     </div>
     <script>
         $(document).ready(function(){

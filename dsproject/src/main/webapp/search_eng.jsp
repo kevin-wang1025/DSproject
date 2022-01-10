@@ -1,5 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="utf-8">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -30,7 +39,6 @@
         #item1{
             width:100%;
             height:30%;
-            display:none;
         }
         #item2{
             width:100%;
@@ -47,10 +55,10 @@
 </head>
 <body>
     <div id="container">
-        <form action="search.jsp" method="get">
-            <h1 id="item1" class="font-style">歡迎進入美食搜尋系統</h1>
-            <p id="item2"><input type="text" name="searching" autofocus placeholder="請輸入關鍵字"></p>
-            <p id="item3"><input type="submit" value="尋找美食！" class="button"></p>
+        <form action="result_eng.jsp" method="get">
+            <h1 id="item1" class="font-style">Welcome to food searching engine!</h1>
+            <p id="item2"><input type="search" name="searching" autofocus placeholder="Please enter key word"></p>
+            <p id="item3"><input type="submit" value="search!" class="button"></p>
         </form>
     </div>
     <script>
@@ -58,5 +66,7 @@
             $("#item1").fadeIn(3000);
         });
     </script>
+</body>
+</html>
 </body>
 </html>

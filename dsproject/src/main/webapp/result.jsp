@@ -1,5 +1,5 @@
-<%@ page language="java" import="dsproject.*,java.util.*,java.io.*,javax.servlet.*" contentType="text/html; charset=BIG5"
-    pageEncoding="utf-8"%>
+<%@ page language="java" import="dsproject.*,java.util.*,java.io.*,javax.servlet.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,20 +17,18 @@
 <body>
 	<div class="container">
 		<h1 style="font-weight:bold;font-style:italic">搜尋結果</h1>
+		<br>
 		<%
-		out.println("testing");
 		String get=request.getParameter("searching") ;
 		List<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
 //		List<HashMap> rankwebs = new ArrayList<HashMap>();
-		
-		//使用者輸入關鍵字
 		
 		try {
 
 //----------匯入Google網頁-----------------------------------------------------//
 			GoogleQuery o =new GoogleQuery(get);
 			HashMap<String,String> goo = o.query();
-
+			
 			
 			//分析google網頁
 			for(String key : goo.keySet()) {
@@ -47,7 +45,10 @@
 				WebPage rootPage = new WebPage(url, key);
 				WebTree t = new WebTree(rootPage);
 				tlst.add(t);
-				out.println("Webroot:"+key+","+url);
+				out.println(key+","+url);
+		%>
+				<br>
+		<%
 				//印出主網頁的Keyword List(分析網頁的結果)
 				
 			}
@@ -74,6 +75,7 @@
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		out.println("done");
 		%>
 	</div>
 </body>

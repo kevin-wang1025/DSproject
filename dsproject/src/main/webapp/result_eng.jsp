@@ -18,7 +18,7 @@
 	<div class="container">
 		<h1 style="font-weight:bold;font-style:italic">Searching Result</h1>
 		<%
-		out.println("testing");
+		
 		String get=request.getParameter("searching") ;
 		List<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
 //		List<HashMap> rankwebs = new ArrayList<HashMap>();
@@ -47,7 +47,10 @@
 				WebPage rootPage = new WebPage(url, key);
 				WebTree t = new WebTree(rootPage);
 				tlst.add(t);
-				out.println("Webroot:"+key+","+url);
+				out.println(key+","+url);
+		%>
+				<br>
+		<%
 				//印出主網頁的Keyword List(分析網頁的結果)
 				
 			}

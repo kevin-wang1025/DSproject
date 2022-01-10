@@ -1,16 +1,43 @@
 <%@ page language="java" import="dsproject.*,java.util.*,java.io.*,org.jsoup.*" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language="java" import="org.jsoup.*" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Insert title here</title>
 </head>
+<style>
+	.container{
+		display:flex;
+		flex-wrap:wrap;
+		width:1600px;
+		height:1500px;
+		background-color:skyblue;
+	}
+	.header{
+		font-style:italic;
+		font-weight:bold;
+		height:100px;
+		width:1600%;
+		background-color:#ABFFFF;
+		text-align:center;
+		
+	}
+	.result{
+		background-color:#ABFFFF;
+		width:1600px;
+		height:1400px;
+		margin-top:0px;
+	}
+</style>
 <body>
 <form action='${requestUri}' method='get'>
-	<div style="background-color:skyblue;">
-		<p>testing</p>
+	<div class="container">
+		<div class="header">
+			<h1>搜尋結果</h1>
+			<hr>
+		</div>
+		<div class="result">
 		<%
 		String str=(String) request.getAttribute("str");
 		
@@ -39,11 +66,16 @@
 				WebPage rootPage = new WebPage(url, key);
 				WebTree t = new WebTree(rootPage);
 				tlst.add(t);
-				System.out.println("Webroot:"+key+","+url);
-				//印出主網頁的Keyword List(分析網頁的結果)
+				%>
+				
+				<%out.println(key+","+url);%>
+				<br><br>
+			<%				//印出主網頁的Keyword List(分析網頁的結果)
 				
 			}
-			
+			%>
+		
+			<%
 			for (WebTree t : tlst) {
 //				t.root.webPage.getKeywordsList();//得到每個WebPage的Keywordlst
 				
@@ -68,7 +100,7 @@
 				e.printStackTrace();
 			}
 		%>
-		
+		</div>
 	</div>
 </form>
 </body>

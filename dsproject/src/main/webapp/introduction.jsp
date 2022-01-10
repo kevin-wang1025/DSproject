@@ -1,9 +1,11 @@
+<%@ page language="java" import="dsproject.*,java.util.*,java.io.*,org.jsoup.*,javax.servlet.*" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
         #button{
             border-radius:50px;
             width:200px;
@@ -131,7 +133,6 @@
             }
             else{
                 window.location.assign("search_eng.html");
-                
             }
         }
         function jump2(){
@@ -145,7 +146,7 @@
     </script>
 </head>
 <body>
-    <div id="container">
+	<div id="container">
         <div id="item4">
             <header id="item1"><img src="image//logo_blue.png"><h1 class="font" id="text1">台北美食地圖</h1></header>
             <article>
