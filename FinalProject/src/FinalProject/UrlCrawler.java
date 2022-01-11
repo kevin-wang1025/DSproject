@@ -81,10 +81,7 @@ public class UrlCrawler{
 		if(lis!=null) {
 			for(Element li : lis)
 			{
-				if(numofwebpage< 2) {//每次只抓前兩個子網頁作為小孩
-					try 
-
-					{
+				try{
 						String citeUrl = li.attr("abs:href");
 						//再過一層濾出url
 						String title = li.text();
@@ -102,11 +99,9 @@ public class UrlCrawler{
 //						e.printStackTrace();
 
 					}
-				}
-				else {break;}
 			}
+			}
+		return retVal;
 		}
-			return retVal;
-	}
 		
 }

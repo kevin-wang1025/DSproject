@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+import FinalProject.UrlCrawler;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -37,19 +39,28 @@ public class Main {
 				try {
 					//Get root score
 //					t.root.nodeScore = t.root.webPage.setScore();
-					//setScore() 和getkwlst()都是自創的method
 					//getkwlst()用來獲取每個webPage的完整keyword List(包含name, count, weight)
 					//setScore()：將getkwlst獲得的完整keyword List 算出總分
-//					System.out.println(totalscore);
+					
+					//加入第一層的小孩
 					UrlCrawler u = new UrlCrawler(t.root.webPage.url);
-					t.root.addSublinksChildren(u.query());//加入第一層的小孩
+					t.root.addSublinksChildren(u.query());
+					/*HashMap<String, String> m = u.query();
+					//System.out.println(m);??//{=https://icook.tw/login}
+					
+					for(String k : m.keySet()) {
+							if(t.root.children.size()<2) {
+								t.root.addChild(new WebNode(new WebPage(m.get(k) ,k)));
+								//System.out.println(k+","+m.get(k));
+							}
+							else {break;}	
+					}*/
+					
 					//addSublinksChildren：自創的method，用來加入每個tree的子網頁
-					
 					//加入第一個小孩的小孩（兩個）
-					
-					UrlCrawler c1 = new UrlCrawler(t.root.children.get(0).webPage.url);
+					/*UrlCrawler c1 = new UrlCrawler(t.root.children.get(0).webPage.url);
 					t.root.children.get(0).addSublinksChildren(c1.query());
-					
+					*/
 					//加入第二個小孩的小孩（兩個）
 					/*UrlCrawler c2 = new UrlCrawler(t.root.children.get(1).webPage.url);
 					t.root.children.get(1).addSublinksChildren(c2.query());

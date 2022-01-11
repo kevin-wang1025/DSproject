@@ -56,19 +56,15 @@ public class WebNode {
 		return retVal;
 	}
 
-	public void addSublinksChildren(HashMap<String, String> m) throws IOException {
-		int childrens = 0 ;
+	public void addSublinksChildren(HashMap<String, String> m) throws IOException{
 		for(String k : m.keySet()) {
-			if(childrens<2) {
-				WebNode ch = new WebNode(new WebPage(m.get(k) ,k));
-				addChild(ch);
-				childrens += 1;	
-//				System.out.println("第"+getDepth()+"層"+"第"+childrens+"個小孩:"+k+","+suburl);
-				
+			if(children.size()<2) {
+				addChild(new WebNode(new WebPage(m.get(k) ,k)));
+				//System.out.println("第"+getDepth()+"層"+"第"+children.size()+"個小孩:"+k+","+m.get(k));
+				}
+			else {break;}	
 			}
-			else {break;}
 		}
-	}
 	
 	public void printkwlst(ArrayList<Keyword> kwlst) {
 		for(Keyword k : kwlst ) {

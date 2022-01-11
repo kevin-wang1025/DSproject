@@ -32,7 +32,7 @@ public class sortTrees {
 			
 			for (int j = leftbound; j <= rightbound - 1; j++) 
 			{
-				if (tlst.get(j).root.nodeScore < tlst.get(rightbound).root.nodeScore) 
+				if (tlst.get(j).root.nodeScore > tlst.get(rightbound).root.nodeScore) 
 				{
 //					System.out.println(j+" "+rightbound+" "+lst.get(j).count);
 					i++;

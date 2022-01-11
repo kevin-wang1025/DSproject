@@ -123,9 +123,4 @@ public class GoogleQuery
 		return retVal;
 
 	}
-
-	
-
-	
-
 }
