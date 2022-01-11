@@ -16,7 +16,6 @@ import dsproject.WebNode;
 import dsproject.WebPage;
 import dsproject.WebTree;
 import dsproject.Keyword;
-import dsproject.KeywordList;
 import dsproject.WordCounter;
 import java.io.PrintWriter;
 import java.util.HashMap;

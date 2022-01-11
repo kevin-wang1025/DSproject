@@ -19,7 +19,7 @@ public class WebNode {
 		//this method should be called in post-order mode
 		
 		//**compute webPage score
-		webPage.setScore(keywords);
+		webPage.setScore();
 		//**set webPage score to nodeScore
 		nodeScore = webPage.score;
 		
@@ -56,20 +56,15 @@ public class WebNode {
 		return retVal;
 	}
 
-	public void addSublinksChildren(HashMap<String, String> m) {
-		int childrens = 0 ;
+	public void addSublinksChildren(HashMap<String, String> m) throws IOException{
 		for(String k : m.keySet()) {
-			if(childrens<2) {
-				String suburl = m.get(k);
-				addChild(new WebNode(new WebPage(suburl,k)));
-//				new WordCounter(suburl).countKeyword(kwlst.get(i));
-				childrens += 1;
-				System.out.println("第"+getDepth()+"層"+"第"+childrens+"個小孩:"+k+","+suburl);
-				
+			if(children.size()<2) {
+				addChild(new WebNode(new WebPage(m.get(k) ,k)));
+				//System.out.println("第"+getDepth()+"層"+"第"+children.size()+"個小孩:"+k+","+m.get(k));
+				}
+			else {break;}	
 			}
-			else {break;}
 		}
-	}
 	
 	public void printkwlst(ArrayList<Keyword> kwlst) {
 		for(Keyword k : kwlst ) {
@@ -78,3 +73,4 @@ public class WebNode {
 		
 	}
 }
+

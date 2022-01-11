@@ -20,20 +20,17 @@
 		<br>
 		<%
 		String get=request.getParameter("searching") ;
-		List<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
-//		List<HashMap> rankwebs = new ArrayList<HashMap>();
+		ArrayList<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
+		//webRankList ranklst= new webRankList();
+		//使用者輸入關鍵字
+		
 		
 		try {
-
-//----------匯入Google網頁-----------------------------------------------------//
-			GoogleQuery o =new GoogleQuery(get);
-			HashMap<String,String> goo = o.query();
-			
-			
-			//分析google網頁
+			//System.out.println(new GoogleQuery(input.nextLine()).query());
+			HashMap<String,String> goo = new GoogleQuery(get).query();
 			for(String key : goo.keySet()) {
 				String url = goo.get(key);
-				
+				//If-else 清理每個url為有效url
 				if(url.indexOf("&")!=-1) {
 					url = url.substring(url.indexOf("h") , url.indexOf("&"));
 					}
@@ -41,41 +38,44 @@
 					url = url.substring(url.indexOf("h"));
 				}
 				
-				
 				WebPage rootPage = new WebPage(url, key);
 				WebTree t = new WebTree(rootPage);
-				tlst.add(t);
-				out.println(key+","+url);
-		%>
-				<br><br>
-		<%
-				//印出主網頁的Keyword List(分析網頁的結果)
-				
+				tlst.add(t);//將此新建的樹存入tlst
 			}
 			
 			for (WebTree t : tlst) {
-//				t.root.webPage.getKeywordsList();//得到每個WebPage的Keywordlst
-				
-				//建立每個主網頁的樹(第一層)，同時算出每個節點網頁內容的關鍵字數量
-				UrlCrawler u = new UrlCrawler(t.root.webPage.url);
-				t.root.addSublinksChildren(u.query());
-				
-				
-				//建立每個主網頁的樹(第二層)，同時算出每個節點網頁內容的關鍵字數量
-				UrlCrawler c1 = new UrlCrawler(t.root.children.get(0).webPage.url);
-				t.root.children.get(0).addSublinksChildren(c1.query());
-				
-				UrlCrawler c2 = new UrlCrawler(t.root.children.get(1).webPage.url);
-				t.root.children.get(1).addSublinksChildren(c2.query());
-				
+				try {
+					//Get root score
+//					t.root.nodeScore = t.root.webPage.setScore();
+					//getkwlst()用來獲取每個webPage的完整keyword List(包含name, count, weight)
+					//setScore()：將getkwlst獲得的完整keyword List 算出總分
+					
+					//加入第一層的小孩
+					UrlCrawler u = new UrlCrawler(t.root.webPage.url);
+					t.root.addSublinksChildren(u.query());
+					
+					//計算該棵樹的總分
+					t.setPostOrderScore(t.root.webPage.getkwlst());
+					//System.out.println(t.root.nodeScore);
+				}catch (IOException e) {
+					continue;
 				}
-		}
-		
-		catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-		out.println("done");
+			//排序tlst，得到最終結果(使用quick Sort)
+			sortTrees st = new sortTrees();
+			st.tlst = tlst; 
+			st.sort();
+			//測試
+			for(WebTree w : st.tlst) {
+				out.println(w.root.webPage.name +"," +w.root.nodeScore);
+			%>
+			<br><br>
+			<%
+				}
+			} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		%>
 	</div>
 </body>

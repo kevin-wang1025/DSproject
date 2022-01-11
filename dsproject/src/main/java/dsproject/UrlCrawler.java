@@ -3,20 +3,7 @@ package dsproject;
 import java.io.BufferedReader;
 
 import java.io.IOException;
-
-import java.io.InputStream;
-
-import java.io.InputStreamReader;
-
-import java.net.URL;
-
-import java.net.URLConnection;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 import org.jsoup.Jsoup;
 
@@ -82,16 +69,13 @@ public class UrlCrawler{
 		if(lis!=null) {
 			for(Element li : lis)
 			{
-				if(numofwebpage< 2) {
-					try 
-
-					{
+				try{
 						String citeUrl = li.attr("abs:href");
 						//再過一層濾出url
 						String title = li.text();
 						//存title的標籤
 						
-						if(citeUrl.indexOf("ht") ==-1 || title.equals("") ) {
+						if(citeUrl.indexOf("ht") ==-1 || title.equals(" ") ) {
 							//citeUrl.indexOf("https") ==-1 || citeUrl.indexOf("http")==-1 || title.equals("")|| title.length()<10
 							continue;
 						}
@@ -103,14 +87,9 @@ public class UrlCrawler{
 //						e.printStackTrace();
 
 					}
-//					numofwebpage +=1;
-				}
-				else {break;}
 			}
+			}
+		return retVal;
 		}
-			
-
-			return retVal;
-	}
 		
 }

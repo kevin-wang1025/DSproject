@@ -23,43 +23,22 @@ public class WebTree {
 		//**setNode score of startNode
 		startNode.setNodeScore(keywords);
 		}
-	
-	public void eularPrintTree(){
-		eularPrintTree(root);
-	}
-	
-	private void eularPrintTree(WebNode startNode){
-		int nodeDepth = startNode.getDepth();
+
 		
-		if(nodeDepth > 1) System.out.print("\n" + repeat("\t", nodeDepth-1));
-		//print "("
-		System.out.print("(");
-		//print "name","score"
-		System.out.print(startNode.webPage.name+","+startNode.nodeScore);
-		
-		//2.print child preorder
-		for(WebNode child : startNode.children){
-			eularPrintTree(child);
-			//System.out.print("(" + child.webPage.name + "," + child.webPage.score + ")");
+	/*public double postOrder(WebNode root) {
+		double totalscore = 0;
+		if (root == null) return 0;
+		if(root.children.get(0) != null) {
+			postOrder(root.children.get(0));
+			totalscore += root.children.get(0).webPage.score;
+			if(root.children.get(1)!=null) {
+				postOrder(root.children.get(1));
+				totalscore += root.children.get(1).webPage.score;
+			}
 		}
-		
-		//print ")"
-		System.out.print(")");
-		
-		/*for example
-		(Soslab,459.0
-				(Publication,286.2)
-				(Projects,42.0
-						(Stranger,0.0)
-				)
-				(MEMBER,12.0)
-				(Course,5.3999999999999995)
-		)
-		*/
-		if(startNode.isTheLastChild()) System.out.print("\n" + repeat("\t", nodeDepth-2));
-		
-	}
-	
+		return totalscore;
+	}*/
+
 	private String repeat(String str,int repeat){
 		String retVal  = "";
 		for(int i=0;i<repeat;i++){
