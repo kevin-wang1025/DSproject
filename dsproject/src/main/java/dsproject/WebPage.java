@@ -35,7 +35,7 @@ public class WebPage {
 	public ArrayList<Keyword> getkwlst() throws IOException {
 		ArrayList<Keyword> kwlst = new ArrayList<Keyword>();
 		//讀入Keywords檔案中設定好的關鍵字及權重
-		File file = new File("Keywords.txt");
+		File file = new File("C:\\Users\\10830\\Desktop\\Keywords.txt");
 		Scanner sc = new Scanner(file);
 		int score = 0 ;
 		

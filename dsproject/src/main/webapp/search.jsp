@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="BIG5">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
         body{
@@ -52,7 +52,7 @@
 </head>
 <body>
 	<div id="container">
-		<form action='result.jsp' method="get">
+		<form action="result.jsp" method="get">
         	<h1 id="item1" class="font-style">歡迎進入美食搜尋系統</h1>
         	<p id="item2"><input type="text" name="searching" autofocus placeholder="請輸入關鍵字"></p>
         	<p id="item3"><input type="submit" value="尋找美食！" class="button"></p>

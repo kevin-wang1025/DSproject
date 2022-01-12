@@ -19,6 +19,8 @@
 		<h1 style="font-weight:bold;font-style:italic">搜尋結果</h1>
 		<br>
 		<%
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String get=request.getParameter("searching") ;
 		ArrayList<WebTree> tlst = new ArrayList<WebTree>();//存放每棵樹root的list
 		//webRankList ranklst= new webRankList();
